@@ -32,7 +32,7 @@ if (cluster.isPrimary) {
   }
 }
 else {
-  const app = express();
+   app = express();
   
 }
 // console.log(cpu);
