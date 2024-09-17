@@ -105,7 +105,7 @@ adminRouter.post('/sendpasswordlink', async (req, res) => {
           form: "erbitservices@gmail.com",
           to: email,
           subject: "password reset link",
-          text: `https://main--erbitservices.netlify.app/ConfirmPassword/${setusertoken._id}/${token}`,
+          text: `${process.env.BASE}/ConfirmPassword/${setusertoken._id}/${token}`,
         };
 
         transporter.sendMail(mailOptions, (error, info) => {
