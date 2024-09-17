@@ -1,7 +1,7 @@
 const express = require("express");
 const Countroute = express.Router();
 const Storage = require("../models/FormData");
-const Count = require("../models/count");
+const Count = require("../models/Count");
 
 Countroute.post("/Count", async (req, res) => {
   try {
