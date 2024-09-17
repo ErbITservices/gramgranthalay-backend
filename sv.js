@@ -1,5 +1,7 @@
 require("dotenv").config();
 const express = require("express");
+const cluster = require("cluster");
+const os = require("os")
 const app = express();
 const db = require("./db");
 const cors = require("cors");
@@ -22,6 +24,18 @@ const corsOptions = {
   methods: "GET, POST, PUT, DELETE, PATCH, HEAD",
   credentials: true,
 };
+const cpu = os.cpus().length;
+if (cluster.isPrimary) {
+  for (let index = 0; index < cpu.length; index++) {
+    cluster.fork();
+    
+  }
+}
+else {
+  const app = express();
+  
+}
+// console.log(cpu);
 
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
