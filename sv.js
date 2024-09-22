@@ -31,7 +31,7 @@ if (cluster.isPrimary) {
 
 
   const corsOptions = {
-    origin: `${base_url}`,
+    origin: `http://localhost:5173` || `${base_url}`,
     methods: "GET, POST, PUT, DELETE, PATCH, HEAD",
     credentials: true,
   };
