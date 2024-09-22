@@ -4,7 +4,6 @@ const cluster = require("cluster");
 const os = require("os")
 const db = require("./db");
 const cors = require("cors");
-
 const bodyParser = require("body-parser");
 const formRouter = require("./routes/fromRutes");
 const district = require("./routes/DistrictRutes");
@@ -32,7 +31,7 @@ if (cluster.isPrimary) {
 
 
   const corsOptions = {
-    origin: `http://localhost:5173` || `${base_url}` || "*",
+    origin: `http://localhost:5173` || `${base_url}`,
     methods: "GET, POST, PUT, DELETE, PATCH, HEAD",
     credentials: true,
   };
@@ -59,7 +58,7 @@ if (cluster.isPrimary) {
 
   db(
     app.listen(PORT, () => {
-      console.log(`server is run on port ${PORT}`);
+      console.log(`jaimin server is run on port ${PORT}`);
     })
   );
 }
