@@ -2,7 +2,7 @@
   "name": "newb",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "sv.js",
   "scripts": {
     "dev": "nodemon sv.js",
     "start": "node sv.js",
