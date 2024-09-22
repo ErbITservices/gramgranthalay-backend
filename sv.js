@@ -58,7 +58,7 @@ if (cluster.isPrimary) {
 
   db(
     app.listen(PORT, () => {
-      console.log(`jaimin server is run on port ${PORT}`);
+      console.log(`server is run on port ${PORT}`);
     })
   );
 }

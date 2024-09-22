@@ -32,7 +32,7 @@ Motibhaiamin7rutes.put("/:uid", async (req, res) => {
     res.status(200).json(response);
 
     if (!response) {
-      return res.status(404).json({ message: "Person not found!" });
+      return res.status(404).json({ message: "sorry Person not found!" });
     }
   } catch (err) {
     console.log(err);
