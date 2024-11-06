@@ -16,7 +16,7 @@ const Motibhaiamin4rutes = require("./routes/Motibhaiamin4rutes");
 const Motibhaiamin5rutes = require("./routes/Motibhaiamin5rutes");
 const Motibhaiamin6rutes = require("./routes/Motibhaiamin6rutes");
 const Motibhaiamin7rutes = require("./routes/Motibhaiamin7rutes");
-const base_url = process.env.BASE;
+const base_url = process.env.BASE ;
 
 
 const cpu = os.cpus().length;
