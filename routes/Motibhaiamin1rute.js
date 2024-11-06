@@ -1,11 +1,14 @@
 const express = require("express");
 const Motibhaiamin1rutes = express.Router();
-const Motibhaiamin = require("../models/Motibhaiamin");
+// const Motibhaiamin = require("../models/Motibhaiamin");
+const Motibhaiamin1 = require("../models/Motibhaiamin1");
 
 Motibhaiamin1rutes.post("/", async (req, res) => {
   try {
     const data = req.body;
-    const newPerson = new Motibhaiamin(data);
+    console.log(data);
+    
+    const newPerson = new Motibhaiamin1(data);
     const savedPerson = await newPerson.save();
     console.log("data save");
     res.status(200).json(savedPerson);
@@ -19,7 +22,7 @@ Motibhaiamin1rutes.post("/", async (req, res) => {
 
 Motibhaiamin1rutes.get("/", async (req, res) => {
   try {
-    const data = await Motibhaiamin.find();
+    const data = await Motibhaiamin1.find();
     console.log("data fatch");
     res.status(200).json(data);
   } catch (err) {
