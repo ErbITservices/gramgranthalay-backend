@@ -23,9 +23,9 @@ const cpu = os.cpus().length;
 
 
 if (cluster.isPrimary) {
-  for (let index = 0; index < cpu; index++) {
+  // for (let index = 0; index < cpu; index++) {
     cluster.fork();
-  }
+  // }
 } else {
  const app = express();
 
