@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
+const serverless = require("serverless-http"); // Import serverless-http
 const db = require("./db");
 const formRouter = require("./routes/fromRutes");
 const district = require("./routes/DistrictRutes");
@@ -44,22 +45,5 @@ app.use("/Motibhaiamin5", Motibhaiamin5rutes);
 app.use("/Motibhaiamin6", Motibhaiamin6rutes);
 app.use("/Motibhaiamin7", Motibhaiamin7rutes);
 
-// Export the Lambda-compatible handler
-exports.handler = async (event, context) => {
-  return new Promise((resolve, reject) => {
-    const server = app.listen(0, () => {
-      // Invoke the Express app handler
-      const req = event;
-      const res = context.succeed;
-
-      app.handle(req, res);
-
-      resolve(res);
-    });
-
-    // Handle any uncaught errors
-    server.on("error", (error) => {
-      reject(error);
-    });
-  });
-};
+// Wrap the Express app with serverless-http
+module.exports.handler = serverless(app); // This exports the handler Lambda expects
