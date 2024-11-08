@@ -31,7 +31,7 @@ if (cluster.isPrimary) {
 
 
   const corsOptions = {
-    origin:  `${base_url}` || `http://localhost:5173`,
+    origin: `${base_url}` || `http://localhost:5173`,
     methods: "GET, POST, PUT, DELETE, PATCH, HEAD",
     credentials: true,
   };
@@ -42,6 +42,9 @@ if (cluster.isPrimary) {
   app.use(bodyParser.json());
   // app.use("/person",personRoutes);
   // app.use('/menu',menuRoutes) ;
+  app.get("/", async (req, res) => {
+    res.send("HELLO WORLD");
+  });
   app.use("/form", formRouter);
   app.use("/district", district);
   app.use("/Count", Count);
