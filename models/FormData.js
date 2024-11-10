@@ -289,7 +289,7 @@ const storageSchema = new mongoose.Schema({
   },
   librarystatus: {
     type: String,
-   
+    default: "Active"
   }
 });
 
