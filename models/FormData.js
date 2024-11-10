@@ -13,6 +13,7 @@ const storageSchema = new mongoose.Schema({
   gam: {
     type: String,
   },
+
   phone: {
     type: String,
   },
@@ -286,6 +287,10 @@ const storageSchema = new mongoose.Schema({
   kothersmall: {
     type: String,
   },
+  librarystatus: {
+    type: String,
+   
+  }
 });
 
 //create model
