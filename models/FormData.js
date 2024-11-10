@@ -289,8 +289,8 @@ const storageSchema = new mongoose.Schema({
   },
   librarystatus: {
     type: String,
-    default: "Active"
-  }
+    default: "સક્રિય",
+  },
 });
 
 //create model
