@@ -22,4 +22,5 @@ district.get("/:district", async (req, res) => {
     res.status(500).json(err);
   }
 });
+
 module.exports = district;

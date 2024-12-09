@@ -51,4 +51,42 @@ Motibhaiamin2rutes.get("/", async (req, res) => {
   }
 });
 
+Motibhaiamin2rutes.put("/:id", async (req, res) => {
+  try {
+    const personId = req.params.id;
+    const updateField = req.body;
+    const data = await Motibhaiamin2.findOne({ _id: personId });
+    const response = await Motibhaiamin2.findByIdAndUpdate(data, updateField, {
+      new: true,
+      runValidators: true,
+    });
+    console.log("data updated");
+    res.status(200).json(response);
+
+    if (!response) {
+      return res.status(404).json({ message: "Person not found!" });
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+Motibhaiamin2rutes.delete("/:id", async (req, res) => {
+  try {
+    const personId = req.params.id;
+    const data = await Motibhaiamin2.findOne({ _id: personId });
+
+    const reminder = await Motibhaiamin2.findOneAndDelete(data);
+    if (!reminder) {
+      return res.status(404).json({ message: "No Menu with this ID" });
+    }
+    console.log("data deleted");
+    res.status(200).json({ message: "person deleted success" });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
 module.exports = Motibhaiamin2rutes;

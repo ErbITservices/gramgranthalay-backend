@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const cluster = require("cluster");
-const os = require("os")
+const os = require("os");
 const db = require("./db");
 const cors = require("cors");
 const bodyParser = require("body-parser");
@@ -18,20 +18,17 @@ const Motibhaiamin6rutes = require("./routes/Motibhaiamin6rutes");
 const Motibhaiamin7rutes = require("./routes/Motibhaiamin7rutes");
 const base_url = process.env.BASE;
 
-
 const cpu = os.cpus().length;
-
 
 if (cluster.isPrimary) {
   for (let index = 0; index < cpu; index++) {
     cluster.fork();
   }
 } else {
- const app = express();
-
+  const app = express();
 
   const corsOptions = {
-    origin:  `${base_url}`|| `http://localhost:5173` ,
+    origin: `${base_url}` || `http://localhost:5173`,
     methods: "GET, POST, PUT, DELETE, PATCH, HEAD",
     credentials: true,
   };
@@ -62,4 +59,3 @@ if (cluster.isPrimary) {
     })
   );
 }
-
