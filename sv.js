@@ -28,7 +28,7 @@ const base_url = process.env.BASE;
 const app = express();
 
 const corsOptions = {
-  origin: `${base_url}` || `http://localhost:5173`,
+  origin: [`${base_url}` , `http://localhost:5173`],
 
   methods: "GET, POST, PUT, DELETE, PATCH, HEAD",
   credentials: true,
