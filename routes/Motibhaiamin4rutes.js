@@ -5,6 +5,8 @@ const Motibhaiamin4 = require("../models/Motibhaiamin4");
 Motibhaiamin4rutes.post("/", async (req, res) => {
   try {
     const data = req.body;
+    console.log(data);
+
     const newPerson = new Motibhaiamin4(data);
     const savedPerson = await newPerson.save();
     console.log("data save");
@@ -15,15 +17,61 @@ Motibhaiamin4rutes.post("/", async (req, res) => {
   }
 });
 
-Motibhaiamin4rutes.put("/:uid", async (req, res) => {
+Motibhaiamin4rutes.get("/:lname", async (req, res) => {
   try {
-    const personId = req.params.uid;
-    console.log(personId);
+    const lnametype = req.params.lname;
+    console.log(lnametype);
 
+    const data = await Motibhaiamin4.find({ lname: lnametype });
+    if (!data) {
+      res.status(500).json({
+        message: "No data found",
+      });
+    }
+    0;
+    console.log("data fatch");
+    res.status(200).json(data);
+    console.log(data);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+Motibhaiamin4rutes.get("/", async (req, res) => {
+  try {
+    const data = await Motibhaiamin4.find();
+    console.log("data fatch");
+    res.status(200).json(data);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+Motibhaiamin4rutes.get("/:lname", async (req, res) => {
+  try {
+    const { lname } = req.params;
+
+    const data = await Motibhaiamin4.findOne({ lname: lname });
+    if (!data) {
+      res.status(500).json({
+        message: "No data found",
+      });
+    }
+    0;
+    console.log("data fatch");
+    res.status(200).json(data);
+    console.log(data);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+Motibhaiamin4rutes.put("/:id", async (req, res) => {
+  try {
+    const personId = req.params.id;
     const updateField = req.body;
-    console.log(updateField);
-
-    const data = await Motibhaiamin4.find({ uid: personId });
+    const data = await Motibhaiamin4.findOne({ _id: personId });
     const response = await Motibhaiamin4.findByIdAndUpdate(data, updateField, {
       new: true,
       runValidators: true,
@@ -39,12 +87,17 @@ Motibhaiamin4rutes.put("/:uid", async (req, res) => {
     res.status(500).json(err);
   }
 });
-
-Motibhaiamin4rutes.get("/", async (req, res) => {
+Motibhaiamin4rutes.delete("/:id", async (req, res) => {
   try {
-    const data = await Motibhaiamin4.find();
-    console.log("data fatch");
-    res.status(200).json(data);
+    const personId = req.params.id;
+    const data = await Motibhaiamin4.findOne({ _id: personId });
+
+    const reminder = await Motibhaiamin4.findOneAndDelete(data);
+    if (!reminder) {
+      return res.status(404).json({ message: "No Menu with this ID" });
+    }
+    console.log("data deleted");
+    res.status(200).json({ message: "person deleted success" });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
