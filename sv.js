@@ -28,11 +28,7 @@ if (cluster.isPrimary) {
   const app = express();
 
   const corsOptions = {
-<<<<<<< HEAD
-    origin: `${base_url}` || `http://localhost:5173`,
-=======
-    origin:  `${base_url}` || `http://localhost:5173`,
->>>>>>> bee1b7f29ce33c368d2eb34695bda9b86f0a5957
+    origin:  [`${base_url}` , `http://localhost:5173`],
     methods: "GET, POST, PUT, DELETE, PATCH, HEAD",
     credentials: true,
   };

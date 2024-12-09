@@ -18,9 +18,6 @@ Motibhaiamin1rutes.post("/", async (req, res) => {
   }
 });
 
-<<<<<<< HEAD
-Motibhaiamin1rutes.get("/alldata", async (req, res) => {
-=======
 
 
 Motibhaiamin1rutes.get("/:lname", async (req, res) => {
@@ -44,7 +41,6 @@ Motibhaiamin1rutes.get("/:lname", async (req, res) => {
   }
 });
 Motibhaiamin1rutes.get("/", async (req, res) => {
->>>>>>> bee1b7f29ce33c368d2eb34695bda9b86f0a5957
   try {
     const data = await Motibhaiamin1.find();
     console.log("data fatch");
