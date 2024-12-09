@@ -18,7 +18,7 @@ const Motibhaiamin6rutes = require("./routes/Motibhaiamin6rutes");
 const Motibhaiamin7rutes = require("./routes/Motibhaiamin7rutes");
 const base_url = process.env.BASE ;
 
-const cpu = os.cpus().length;
+
 
 // if (cluster.isPrimary) {
 //   for (let index = 0; index < cpu; index++) {
