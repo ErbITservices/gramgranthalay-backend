@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
-const cluster = require("cluster");
-const os = require("os");
+// const cluster = require("cluster");
+// const os = require("os");
 const db = require("./db");
 const cors = require("cors");
 const bodyParser = require("body-parser");
@@ -18,40 +18,41 @@ const Motibhaiamin6rutes = require("./routes/Motibhaiamin6rutes");
 const Motibhaiamin7rutes = require("./routes/Motibhaiamin7rutes");
 const base_url = process.env.BASE;
 
-const cpu = os.cpus().length;
+// const cpu = os.cpus().length;
 
-if (cluster.isPrimary) {
-  for (let index = 0; index < cpu; index++) {
-    cluster.fork();
-  }
-} else {
-  const app = express();
+// if (cluster.isPrimary) {
+//   for (let index = 0; index < cpu; index++) {
+//     cluster.fork();
+//   }
+// } else {
+const app = express();
 
-  const corsOptions = {
-    origin: `${base_url}` || `http://localhost:5173`,
-    methods: "GET, POST, PUT, DELETE, PATCH, HEAD",
-    credentials: true,
-  };
+const corsOptions = {
+  origin: `${base_url}` || `http://localhost:5173`,
 
-  app.use(cors(corsOptions));
-  app.use(bodyParser.json());
-  app.use("/form", formRouter);
-  app.use("/district", district);
-  app.use("/Count", Count);
-  app.use("/admin", adminRouter);
-  app.use("/Motibhaiamin1", Motibhaiamin1rutes);
-  app.use("/Motibhaiamin2", Motibhaiamin2rutes);
-  app.use("/Motibhaiamin3", Motibhaiamin3rutes);
-  app.use("/Motibhaiamin4", Motibhaiamin4rutes);
-  app.use("/Motibhaiamin5", Motibhaiamin5rutes);
-  app.use("/Motibhaiamin6", Motibhaiamin6rutes);
-  app.use("/Motibhaiamin7", Motibhaiamin7rutes);
+  methods: "GET, POST, PUT, DELETE, PATCH, HEAD",
+  credentials: true,
+};
 
-  const PORT = process.env.PORT || 5555;
+app.use(cors(corsOptions));
+app.use(bodyParser.json());
+app.use("/form", formRouter);
+app.use("/district", district);
+app.use("/Count", Count);
+app.use("/admin", adminRouter);
+app.use("/Motibhaiamin1", Motibhaiamin1rutes);
+app.use("/Motibhaiamin2", Motibhaiamin2rutes);
+app.use("/Motibhaiamin3", Motibhaiamin3rutes);
+app.use("/Motibhaiamin4", Motibhaiamin4rutes);
+app.use("/Motibhaiamin5", Motibhaiamin5rutes);
+app.use("/Motibhaiamin6", Motibhaiamin6rutes);
+app.use("/Motibhaiamin7", Motibhaiamin7rutes);
 
-  db(
-    app.listen(PORT, () => {
-      console.log(`jaimin server is run on port ${PORT}`);
-    })
-  );
-}
+const PORT = process.env.PORT || 5555;
+
+db(
+  app.listen(PORT, () => {
+    console.log(`jaimin server is run on port ${PORT}`);
+  })
+);
+// }

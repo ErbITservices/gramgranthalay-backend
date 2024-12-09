@@ -128,7 +128,7 @@ const Motibhaiamin3Schema = new mongoose.Schema({
   select_33: {
     type: String,
   },
-  select_341: {
+  select_34: {
     type: String,
   },
   select_35: {
@@ -318,6 +318,9 @@ const Motibhaiamin3Schema = new mongoose.Schema({
     type: String,
   },
   select_97: {
+    type: String,
+  },
+  select_98: {
     type: String,
   },
 });
