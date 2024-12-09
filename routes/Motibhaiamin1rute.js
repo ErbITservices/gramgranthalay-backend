@@ -18,8 +18,6 @@ Motibhaiamin1rutes.post("/", async (req, res) => {
   }
 });
 
-
-
 Motibhaiamin1rutes.get("/:lname", async (req, res) => {
   try {
     const lnametype = req.params.lname;
