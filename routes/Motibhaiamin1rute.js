@@ -18,7 +18,33 @@ Motibhaiamin1rutes.post("/", async (req, res) => {
   }
 });
 
+<<<<<<< HEAD
 Motibhaiamin1rutes.get("/alldata", async (req, res) => {
+=======
+
+
+Motibhaiamin1rutes.get("/:lname", async (req, res) => {
+  try {
+    const lnametype = req.params.lname;
+    console.log(lnametype);
+
+    const data = await Motibhaiamin1.find({ lname: lnametype });
+    if (!data) {
+      res.status(500).json({
+        message: "No data found",
+      });
+    }
+    0;
+    console.log("data fatch");
+    res.status(200).json(data);
+    console.log(data);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+Motibhaiamin1rutes.get("/", async (req, res) => {
+>>>>>>> bee1b7f29ce33c368d2eb34695bda9b86f0a5957
   try {
     const data = await Motibhaiamin1.find();
     console.log("data fatch");

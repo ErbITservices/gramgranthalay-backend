@@ -16,7 +16,7 @@ const Motibhaiamin4rutes = require("./routes/Motibhaiamin4rutes");
 const Motibhaiamin5rutes = require("./routes/Motibhaiamin5rutes");
 const Motibhaiamin6rutes = require("./routes/Motibhaiamin6rutes");
 const Motibhaiamin7rutes = require("./routes/Motibhaiamin7rutes");
-const base_url = process.env.BASE;
+const base_url = process.env.BASE ;
 
 const cpu = os.cpus().length;
 
@@ -28,7 +28,11 @@ if (cluster.isPrimary) {
   const app = express();
 
   const corsOptions = {
+<<<<<<< HEAD
     origin: `${base_url}` || `http://localhost:5173`,
+=======
+    origin:  `${base_url}` || `http://localhost:5173`,
+>>>>>>> bee1b7f29ce33c368d2eb34695bda9b86f0a5957
     methods: "GET, POST, PUT, DELETE, PATCH, HEAD",
     credentials: true,
   };

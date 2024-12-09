@@ -5,15 +5,23 @@ const Motibhaiamin1Schema = new mongoose.Schema({
     type: String,
     // required: true,
   },
-  gam: {
+  jillo: {
     type: String,
     // required: true,
   },
-  uid: {
+  taluko: {
+    type: String,
+    // required: true,
+  },
+  district: {
     type: String,
     // required: true,
   },
   currentyear: {
+    type: String,
+    // required: true,
+  },
+  finacialyear: {
     type: String,
     // required: true,
   },
