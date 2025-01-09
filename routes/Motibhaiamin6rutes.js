@@ -90,12 +90,9 @@ Motibhaiamin6rutes.put("/:id", async (req, res) => {
 Motibhaiamin6rutes.delete("/:id", async (req, res) => {
   try {
     const personId = req.params.id;
-    const data = await Motibhaiamin6.findOne({ _id: personId });
+              await Motibhaiamin6.findByIdAndDelete(personId);
 
-    const reminder = await Motibhaiamin6.findOneAndDelete(data);
-    if (!reminder) {
-      return res.status(404).json({ message: "No Menu with this ID" });
-    }
+    
     console.log("data deleted");
     res.status(200).json({ message: "person deleted success" });
   } catch (err) {

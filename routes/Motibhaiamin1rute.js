@@ -91,6 +91,8 @@ Motibhaiamin1rutes.put("/:id", async (req, res) => {
 Motibhaiamin1rutes.delete("/:id", async (req, res) => {
   try {
     const personId = req.params.id;
+          await Motibhaiamin1.findByIdAndDelete(personId);
+
     const data = await Motibhaiamin1.findOne({ _id: personId });
 
     const reminder = await Motibhaiamin1.findOneAndDelete(data);
