@@ -293,6 +293,7 @@ const storageSchema = new mongoose.Schema({
   },
   Currentyear: {
     type: String,
+    default: "2024-2025",
   },
 });
 
