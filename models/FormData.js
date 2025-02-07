@@ -291,6 +291,9 @@ const storageSchema = new mongoose.Schema({
     type: String,
     default: "સક્રિય",
   },
+  Currentyear: {
+    type: String,
+  },
 });
 
 //create model
